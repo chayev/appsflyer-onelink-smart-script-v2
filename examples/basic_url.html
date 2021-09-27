@@ -51,11 +51,13 @@
     window.onload = function () {
       document.getElementById('input_url').innerHTML = window.location.href;
       const onelinkGenerator =  new window.AF.OneLinkUrlGenerator(
-        {oneLinkURL: "https://engmntqa.onelink.me/LtRd/",
+        {oneLinkURL: "https://hellomike.onelink.me/yvq0",
          pidKeysList: ['af_pid'],
-         campaignKeysList: ['af_c']
+         campaignKeysList: ['af_c'],
+         impressionURL: "https://impressions.onelink.me/yvq0",
       });
-      const url = onelinkGenerator.generateUrl();
+      const url = onelinkGenerator.generateUrl("click");
+      const impression = onelinkGenerator.generateUrl("impression");
 
       // onelink is generated
       if (url) {
@@ -64,6 +66,15 @@
             document.getElementById('output_url').innerHTML = url;
       }
 
+      if (impression) {
+        var myImage = new Image(1, 1);
+        myImage.style.display = "none";
+        myImage.style.position = "absolute";
+        myImage.style.left = "-1px";
+        myImage.style.top = "-1px";
+        myImage.src = impression;
+        document.body.appendChild(myImage);
+      }
     };
   </script>
 </body>
